@@ -82,8 +82,8 @@ class DATABASE_CONFIG {
 		'driver' => 'mysql',
 		'persistent' => false,
 		'host' => 'localhost',
-		'login' => 'root',
-		'password' => 'ministalo',
+		'login' => 'remasrc',
+		'password' => 'twO^FBY-}4',
 		'database' => 'ipnorte_remasrc',
 		'prefix' => '',
 	);
