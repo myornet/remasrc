@@ -1,0 +1,1 @@
+<?php echo $this->requestAction('/global/global_datos/valor_global/'.$codigo);?>

@@ -1,0 +1,72 @@
+/* 
+    Document   : global
+    Created on : 18/08/2010, 23:30:13
+    Author     : adrian
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+.botonGlobalADD {
+    border: 1px solid #8AAEC6;
+    padding: 3px;
+    clear: both;
+    font-size: 10px;
+    background-color: #8AAEC6;
+    text-decoration: none;
+    height: 30px;
+}
+
+.botonGlobalADD:hover{
+    border: 1px solid #8AAEC6;
+    padding: 3px;
+    clear: both;
+    font-size: 10px;
+    background-color: #8AAEC6;
+    text-decoration: none;
+    color: #FFFFFF;
+    height: 30px;
+}
+
+.form{
+	width:98%;
+	padding: 5px;
+	border:1px solid #858265;
+	/*background-color: #F5F7F7;*/
+	margin-top:5px;
+	margin-bottom: 10px;
+	color:#000000;
+}
+
+.form h1 {
+	font-family:'Gill Sans','lucida grande',helvetica, arial, sans-serif;
+	font-size: 13px;
+	font-weight: bold;
+	margin: 5px 0px 5px 0px;
+	color:#ffffff;
+  	background-color: #8AAEC6;
+  	padding: 3px;
+}
+
+.form table{
+	width:auto;
+	empty-cells: show;
+	border: 0px solid #858265;
+	margin-bottom: 5px;
+	margin-left: 0;
+}
+.form td {
+	font-size: 11px;
+	empty-cells: show;
+	vertical-align: top;
+	background-color: transparent;
+	/*text-align: left*/;
+}
+
+
+/* MENU */
+

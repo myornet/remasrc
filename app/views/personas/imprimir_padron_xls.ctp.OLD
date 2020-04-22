@@ -1,0 +1,69 @@
+<?php 
+
+//debug($personas);
+//exit;
+
+App::import('Vendor','PHPExcel',array('file' => 'excel/PHPExcel.php'));
+App::import('Vendor','PHPExcelWriter',array('file' => 'excel/PHPExcel/Writer/Excel5.php'));
+
+$oPHPExcel = new PHPExcel();
+
+$oPHPExcel->getActiveSheet()->setTitle("PADRON DE BENEFICIARIOS");
+
+$oPHPExcel->getActiveSheet()->setCellValue("A1","TIPO");
+$oPHPExcel->getActiveSheet()->setCellValue("B1","DOCUMENTO");
+$oPHPExcel->getActiveSheet()->setCellValue("C1","BENEFICIARIO");
+$oPHPExcel->getActiveSheet()->setCellValue("D1","CALLE");
+$oPHPExcel->getActiveSheet()->setCellValue("E1","NUMERO");
+$oPHPExcel->getActiveSheet()->setCellValue("F1","BARRIO");
+$oPHPExcel->getActiveSheet()->setCellValue("G1","PROFESION/OFICIO");
+$oPHPExcel->getActiveSheet()->setCellValue("H1","OCUPACION ACTUAL");
+$oPHPExcel->getActiveSheet()->setCellValue("I1","TEL.FIJO");
+$oPHPExcel->getActiveSheet()->setCellValue("J1","TEL.CELULAR");
+$oPHPExcel->getActiveSheet()->setCellValue("K1","TEL.MENSAJES");
+$oPHPExcel->getActiveSheet()->setCellValue("L1","EMAIL");
+
+
+
+
+$oPHPExcel->getActiveSheet()->getStyle("A1")->getFont()->setBold(true);
+$oPHPExcel->getActiveSheet()->getStyle("A1")->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID);
+$oPHPExcel->getActiveSheet()->getStyle("A1")->getFill()->getStartColor()->setRGB('969696');
+
+
+$oPHPExcel->getActiveSheet()->duplicateStyle( $oPHPExcel->getActiveSheet()->getStyle("A1"), "B1:L1");
+
+if(!empty($personas)):
+
+	$i = 2;
+
+	foreach($personas as $persona):
+		
+		$oPHPExcel->getActiveSheet()->getCellByColumnAndRow(0,$i)->setValueExplicit($util->globalDato($persona['Persona']['tipo_documento']));
+		$oPHPExcel->getActiveSheet()->getCellByColumnAndRow(1,$i)->setValueExplicit($persona['Persona']['documento']);
+		$oPHPExcel->getActiveSheet()->getCellByColumnAndRow(2,$i)->setValue(utf8_encode($persona['Persona']['apellido'].", ".$persona['Persona']['nombre']));
+		$oPHPExcel->getActiveSheet()->getCellByColumnAndRow(3,$i)->setValueExplicit($persona['Persona']['calle']);
+		$oPHPExcel->getActiveSheet()->getCellByColumnAndRow(4,$i)->setValueExplicit($persona['Persona']['numero']);
+		$oPHPExcel->getActiveSheet()->getCellByColumnAndRow(5,$i)->setValueExplicit($util->globalDato($persona['Persona']['barrio']));
+		$oPHPExcel->getActiveSheet()->getCellByColumnAndRow(6,$i)->setValueExplicit($util->globalDato($persona['Persona']['tipo_ocupacion_oficio']));
+		$oPHPExcel->getActiveSheet()->getCellByColumnAndRow(7,$i)->setValueExplicit($util->globalDato($persona['Persona']['tipo_ocupacion_oficio_actual']));
+		$oPHPExcel->getActiveSheet()->getCellByColumnAndRow(8,$i)->setValueExplicit($persona['Persona']['telefono_fijo']);
+		$oPHPExcel->getActiveSheet()->getCellByColumnAndRow(9,$i)->setValueExplicit($persona['Persona']['telefono_movil']);
+		$oPHPExcel->getActiveSheet()->getCellByColumnAndRow(9,$i)->setValueExplicit($persona['Persona']['telefono_mensajes']);
+		$oPHPExcel->getActiveSheet()->getCellByColumnAndRow(9,$i)->setValueExplicit($persona['Persona']['email']);
+		$i++;
+	endforeach;
+
+endif;
+
+$oPHPExcel->setActiveSheetIndex(0);
+header("Content-type: application/vnd.ms-excel"); 
+header('Content-Disposition: attachment;filename="PADRON_BENEFICIARIOS_'.date("Ymd").'.xls"');
+header('Cache-Control: max-age=0');
+$objWriter = new PHPExcel_Writer_Excel5($oPHPExcel);
+$objWriter->setTempDir(TMP);
+$objWriter->save('php://output');
+
+
+
+?>

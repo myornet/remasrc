@@ -1,0 +1,176 @@
+<?php 
+
+//debug($personas);
+//exit;
+
+App::import('Vendor','listado_pdf');
+
+$PDF = new ListadoPDF();
+
+$PDF->SetTitle("PADRON DE BENEFICIARIOS");
+$PDF->SetFontSizeConf(8.5);
+
+
+$PDF->Open();
+
+$PDF->titulo['titulo3'] = "PADRON DE BENEFICIARIOS";
+$PDF->titulo['titulo2'] = "";
+$PDF->titulo['titulo1'] = "";
+
+//$PDF->AddPage();
+
+$fontSizeBody = 8;
+
+//$PDF->Reset();	
+
+$fontSizeHeader = 7;
+$W1 = array(25,65,50,10,40);
+$L1 = $PDF->armaAnchoColumnas($W1);	
+
+//$PDF->encabezado[0][0] = array(
+//			'posx' => $L1[0],
+//			'ancho' => $W1[0],
+//			'texto' => 'DOCUMENTO',
+//			'borde' => 'LTB',
+//			'align' => 'C',
+//			'fondo' => 1,
+//			'style' => '',
+//			'colorf' => '#ccc',
+//			'size' => $fontSizeHeader
+//	);
+
+$PDF->encabezado[0][0] = array(
+			'posx' => $L1[0],
+			'ancho' => $W1[0],
+			'texto' => "TIPO/DOCUMENTO",
+			'borde' => 'TLB',
+			'align' => 'C',
+			'fondo' => 1,
+			'style' => 'B',
+			'colorf' => '#ccc',
+			'size' => $fontSizeHeader
+);	
+$PDF->encabezado[0][1] = array(
+			'posx' => $L1[1],
+			'ancho' => $W1[1],
+			'texto' => "BENEFICIARIO",
+			'borde' => 'TB',
+			'align' => 'C',
+			'fondo' => 1,
+			'style' => 'B',
+			'colorf' => '#ccc',
+			'size' => $fontSizeHeader
+);
+$PDF->encabezado[0][2] = array(
+			'posx' => $L1[2],
+			'ancho' => $W1[2],
+			'texto' => "CALLE",
+			'borde' => 'TB',
+			'align' => 'C',
+			'fondo' => 1,
+			'style' => 'B',
+			'colorf' => '#ccc',
+			'size' => $fontSizeHeader
+);
+
+$PDF->encabezado[0][3] = array(
+			'posx' => $L1[3],
+			'ancho' => $W1[3],
+			'texto' => "NRO",
+			'borde' => 'TB',
+			'align' => 'C',
+			'fondo' => 1,
+			'style' => 'B',
+			'colorf' => '#ccc',
+			'size' => $fontSizeHeader
+);
+$PDF->encabezado[0][4] = array(
+			'posx' => $L1[4],
+			'ancho' => $W1[4],
+			'texto' => "BARRIO",
+			'borde' => 'TBR',
+			'align' => 'C',
+			'fondo' => 1,
+			'style' => 'B',
+			'colorf' => '#ccc',
+			'size' => $fontSizeHeader
+);
+
+$PDF->AddPage();
+$PDF->Reset();
+
+if(!empty($personas)):
+
+	foreach($personas as $persona):
+	
+		$PDF->linea[0] = array(
+					'posx' => $L1[0],
+					'ancho' => $W1[0],
+					'texto' => $util->globalDato($persona['Persona']['tipo_documento'])."-".$persona['Persona']['documento'],
+					'borde' => '',
+					'align' => 'L',
+					'fondo' => 0,
+					'style' => '',
+					'colorf' => '#ccc',
+					'size' => $fontSizeHeader
+		);
+		
+		$PDF->linea[1] = array(
+					'posx' => $L1[1],
+					'ancho' => $W1[1],
+					'texto' => $persona['Persona']['apellido'].", ".$persona['Persona']['nombre'],
+					'borde' => '',
+					'align' => 'L',
+					'fondo' => 0,
+					'style' => '',
+					'colorf' => '#ccc',
+					'size' => $fontSizeHeader
+		);		
+
+		$PDF->linea[2] = array(
+					'posx' => $L1[2],
+					'ancho' => $W1[2],
+					'texto' => $persona['Persona']['calle'],
+					'borde' => '',
+					'align' => 'L',
+					'fondo' => 0,
+					'style' => '',
+					'colorf' => '#ccc',
+					'size' => $fontSizeHeader
+		);
+
+		$PDF->linea[3] = array(
+					'posx' => $L1[3],
+					'ancho' => $W1[3],
+					'texto' => $persona['Persona']['numero'],
+					'borde' => '',
+					'align' => 'C',
+					'fondo' => 0,
+					'style' => '',
+					'colorf' => '#ccc',
+					'size' => $fontSizeHeader
+		);
+
+		$PDF->linea[4] = array(
+					'posx' => $L1[4],
+					'ancho' => $W1[4],
+					'texto' => $util->globalDato($persona['Persona']['barrio']),
+					'borde' => '',
+					'align' => 'L',
+					'fondo' => 0,
+					'style' => '',
+					'colorf' => '#ccc',
+					'size' => $fontSizeHeader
+		);		
+		
+		$PDF->Imprimir_linea();
+	
+	endforeach;
+
+
+endif;
+
+
+$PDF->Output("PADRON_BENEFICIARIOS_".date('Ymd').".pdf");
+
+?>
