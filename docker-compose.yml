@@ -1,0 +1,26 @@
+version: '3.3'
+
+services:
+  db:
+    image: mariadb:10.2.31
+    ports:
+      - "3308:3306"
+    volumes:
+      - ./install:/opt/install
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: ipnorte_remasrc
+      MYSQL_USER: remasrc
+      MYSQL_PASSWORD: twO^FBY-}4
+  web:
+    depends_on:
+      - db
+    image: nimmis/apache-php5
+    container_name: web
+    volumes:
+      - .:/var/www/html
+      - ./app/webroot/logs:/logs
+      - ./app/tmp:/tmp/remas
+    ports:
+      - "80:80"
+    restart: always
