@@ -25,7 +25,7 @@ Event.observe(window, 'load', function(){
 
 
 <div id="FormLoginResponse<?php echo $UID?>" style="width:100%;margin: 0 auto;">
-<?//php echo $frm->create('Usuario',array('action' => 'login'));?>
+<?php  echo $frm->create('Usuario',array('action' => 'login'));?>
 <table style="margin: 0 auto;" class="tbl_form">
 	<tr>
 		<td style="text-align: right;">USUARIO</td><td><input type="text" id="UsuarioName" name="data[Usuario][usuario]" value="<?php echo (isset($this->data['Usuario']['usuario']) ? $this->data['Usuario']['usuario'] : '')?>"/></td>
