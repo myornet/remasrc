@@ -4,8 +4,10 @@
 ?>
 <?php echo $html->docType(); ?>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html class="no-js" lang="es">
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title><?php echo Configure::read('APLICACION.app_soft') ." " . Configure::read('APLICACION.app_version')?></title>
 	<?php
 		echo $html->meta('icon');

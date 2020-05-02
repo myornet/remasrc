@@ -1,21 +1,18 @@
 <?
 
 if ($session->check('Message.NOTICE')){
-	print "<div class='notices'>";
+	print "<div class='notification is-marginless is-info>";
 	$session->flash("NOTICE");
-	print "<div style='clear:both;'></div>";
 	print "</div>";
 }
 if ($session->check('Message.ERROR')){
-	print "<div class='notices_error'>";
+	print "<div class='notification is-marginless is-danger'>";
 	$session->flash("ERROR");
-	print "<div style='clear:both;'></div>";
 	print "</div>";
 }
 if ($session->check('Message.OK')){
-	print "<div class='notices_ok'>";
+	print "<div class='notification is-marginless is-success'>";
 	$session->flash("OK");
-	print "<div style='clear:both;'></div>";
 	print "</div>";
 }
 
