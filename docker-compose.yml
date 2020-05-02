@@ -3,6 +3,7 @@ version: '3.3'
 services:
   db:
     image: mariadb:10.2.31
+    container_name: db
     ports:
       - "3308:3306"
     volumes:
@@ -21,6 +22,7 @@ services:
       - .:/var/www/html
       - ./app/webroot/logs:/logs
       - ./app/tmp:/tmp/remas
+      - ./etc/apache2/000-default.conf:/etc/apache2/sites-enabled/000-default.conf:ro
     ports:
       - "80:80"
     restart: always
