@@ -6,17 +6,18 @@ services:
     container_name: db
     ports:
       - "3308:3306"
-    volumes:
-      - ./install:/opt/install
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: ipnorte_remasrc
       MYSQL_USER: remasrc
       MYSQL_PASSWORD: twO^FBY-}4
+    volumes:
+      - ./data/install:/docker-entrypoint-initdb.d
+      - ./data/mysql:/var/lib/mysql
   web:
     depends_on:
       - db
-    image: nimmis/apache-php5
+    build: ./app
     container_name: web
     volumes:
       - .:/var/www/html
