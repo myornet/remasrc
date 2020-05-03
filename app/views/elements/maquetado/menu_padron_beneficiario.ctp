@@ -1,16 +1,54 @@
-<?php 
-$tabs = array(
-				0 => array('url' => '/beneficiarios/ficha/'.$beneficiario['Persona']['id'],'label' => 'FICHA', 'icon' => 'controles/editpaste.png','atributos' => array(), 'confirm' => null),
-				1 => array('url' => '/beneficiarios/modificar_datos_titular/'.$beneficiario_id,'label' => 'DATOS DEL TITULAR', 'icon' => 'controles/yast_sysadmin.png','atributos' => array(), 'confirm' => null),				
-				2 => array('url' => '/beneficiario_adicionales/index/'.$beneficiario_id,'label' => 'GRUPO FAMILIAR', 'icon' => 'controles/groupevent.png','atributos' => array(), 'confirm' => null),
-				3 => array('url' => '/beneficiario_beneficios/index/'.$beneficiario_id,'label' => 'CONSUMOS', 'icon' => 'controles/cart_put.png','atributos' => array(), 'confirm' => null),
-				4 => array('url' => '/beneficiarios/novedades/'.$beneficiario_id,'label' => 'NOVEDADES', 'icon' => 'controles/note.png','atributos' => array(), 'confirm' => null),
-				7 => array('url' => '/beneficiarios/','label' => 'OTRO', 'icon' => 'controles/reload3.png','atributos' => array(), 'confirm' => null),
-			);
-if($user['Usuario']['perfil'] == 3):
-	$tabs[5] = array('url' => '/beneficiarios/modificar_estado/'.$beneficiario_id,'label' => 'ESTADO', 'icon' => 'controles/encrypted.png','atributos' => array(), 'confirm' => null);		
-	$tabs[6] = array('url' => '/beneficiarios/unificar/'.$beneficiario_id,'label' => 'UNIFICAR', 'icon' => 'controles/insertcellcopy.png','atributos' => array(), 'confirm' => null);
-endif;			
-ksort($tabs);			
-echo $cssMenu->menuTabs($tabs,false);	
-?>
+<div class="tabs is-centered">
+	<ul>
+		<li>
+			<a href="/beneficiarios/ficha/<?php echo $beneficiario['Persona']['id'] ?>">
+				<span class="icon is-small"><i class="far fa-clipboard" aria-hidden="true"></i></span>
+				<span>Ficha</span>
+			</a>
+		</li>
+		<li>
+			<a href="/beneficiarios/modificar_datos_titular/<?php echo $beneficiario_id ?>">
+				<span class="icon is-small"><i class="fas fa-user-shield" aria-hidden="true"></i></span>
+				<span>Datos del titular</span>
+			</a>
+		</li>
+		<li>
+			<a href="/beneficiario_adicionales/index/<?php echo $beneficiario_id ?>">
+				<span class="icon is-small"><i class="fas fa-users" aria-hidden="true"></i></span>
+				<span>Grupo familiar</span>
+			</a>
+		</li>
+		<li>
+			<a href="/beneficiario_beneficios/index/<?php echo $beneficiario_id ?>">
+				<span class="icon is-small"><i class="fas fa-shopping-cart" aria-hidden="true"></i></span>
+				<span>Consumos</span>
+			</a>
+		</li>
+		<li>
+			<a href="/beneficiarios/novedades/<?php echo $beneficiario_id ?>">
+			<span class="icon is-small"><i class="fas fa-file-alt" aria-hidden="true"></i></span>
+				<span>Novedades</span>
+			</a>
+		</li>
+		<?php if($user['Usuario']['perfil'] == 3): ?>
+		<li>
+			<a href="/beneficiarios/modificar_estado/<?php echo $beneficiario_id ?>">
+				<span class="icon is-small"><i class="fas fa-exclamation-circle" aria-hidden="true"></i></span>
+				<span>Estado</span>
+			</a>
+		</li>
+		<li>
+			<a href="/beneficiarios/unificar/<?php echo $beneficiario_id ?>">
+				<span class="icon is-small"><i class="far fa-object-group" aria-hidden="true"></i></span>
+				<span>Unificar</span>
+			</a>
+		</li>
+		<?php endif; ?>
+		<li>
+			<a href="/beneficiarios">
+				<span class="icon is-small"><i class="fas fa-search-plus" aria-hidden="true"></i></span>
+				<span>Nueva búsqueda</span>
+			</a>
+		</li>
+	</ul>
+</div>
