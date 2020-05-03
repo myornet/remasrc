@@ -18,6 +18,11 @@
 
 *********************************************/
 
+/* Contenedor principal del contenido */
+.container > .content {
+	padding: 2rem 0 4rem;
+}
+
 /* Formularios */
 label {
 	display: none;
@@ -32,6 +37,11 @@ label.label {
 }
 li.pagination-link.is-current {
 	margin: 0.25rem;
+}
+
+/* Tabs */
+.content .tabs ul {
+	margin-left: 0;
 }
 
 * {
@@ -361,13 +371,11 @@ a {
 	background-color: inherit;
 	color: #000000;
 	text-decoration: none;
-	font-size: 12px;
 }
 a:hover {
 	background-color: inherit;
 	color: #f24f00;
 	text-decoration: underline;
-	font-size: 12px;
 }
 a img {
 	border: none;
