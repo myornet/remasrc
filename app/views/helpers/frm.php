@@ -55,8 +55,9 @@ class FrmHelper extends FormHelper{
 		$URL = $this->base . $opts['URL'];
 		$txt = (isset($opts['LABEL']) ? $opts['LABEL'] : 'Click Aqui');
 		$name = (isset($opts['NAME']) ? $opts['NAME'] : 'btn_'.rand(0,999));
+		$class = (!empty($opts['CLASS']) ? $opts['CLASS'] : 'button is-success'); 
 		$str = "<div class=\"submit\">";
-		$str .= "	<input type=\"button\" name=\"".$name."\" value=\"".$txt."\" onclick=\"javascript:window.location='".$URL."';\"/>";
+		$str .= "	<input class=\"".$opts['CLASS']."\" type=\"button\" name=\"".$name."\" value=\"".$txt."\" onclick=\"javascript:window.location='".$URL."';\"/>";
 		$str .= "</div>";	
 		return $str;
 	}	

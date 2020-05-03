@@ -1,6 +1,3 @@
-
-<br/>
-
 <?php 
 
 $instalAcrobat = "AdbeRdr1001_es_ES.exe";
@@ -17,15 +14,18 @@ $w = 30;
 $opacityMin = "1";
 
 ?>
-<div style="float: right;">
-<a href="<?php echo $this->base?>/<?php echo $instalAcrobat?>" target="_blank">
-<img src="<?php echo $this->base?>/img/pdf2.png" border="0"
-style="margin:5px;opacity:<?php echo $opacityMin?>;filter:alpha(opacity=80)" onmouseover="this.style.opacity=1;this.filters.alpha.opacity=100" 
-onmouseout="this.style.opacity=<?php echo $opacityMin?>;this.filters.alpha.opacity=80" alt="" />
-</a>
-<a href="<?php echo $this->base?>/<?php echo $instalJavaVM?>" target="_blank">
-<img src="<?php echo $this->base?>/img/java2.png" border="0"
-style="margin:5px;opacity:<?php echo $opacityMin?>;filter:alpha(opacity=80)" onmouseover="this.style.opacity=1;this.filters.alpha.opacity=100" 
-onmouseout="this.style.opacity=<?php echo $opacityMin?>;this.filters.alpha.opacity=80" alt="" />
-</a>
+
+<!-- Botones de ejecutables Java y PDF en el footer del sistema -->
+<div class="buttons is-centered">
+    <a class="button is-large" href="<?php echo $this->base?>/<?php echo $instalAcrobat?>" target="_blank">
+        <span class="icon">
+            <i class="far fa-file-pdf"></i>
+        </span>
+    </a>
+
+    <a class="button is-large" href="<?php echo $this->base?>/<?php echo $instalJavaVM?>" target="_blank">
+        <span class="icon">
+            <i class="fab fa-java"></i>
+        </span>
+    </a>
 </div>

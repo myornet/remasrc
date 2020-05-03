@@ -42,9 +42,10 @@ class FrmHelper extends FormHelper{
 	function btnForm($opts){
 		$URL = $this->base . $opts['URL'];
 		$txt = (!empty($opts['LABEL']) ? $opts['LABEL'] : 'Click Aqui');
+		$class = (!empty($opts['CLASS']) ? $opts['CLASS'] : 'button is-success');
 		
 		$str = "<div class=\"submit\">";
-		$str .= "	<input type=\"button\" name=\"".$opts['NAME']."\" id=\"".$opts['NAME']."\" value=\"".$txt."\" onclick=\"javascript:window.location='".$URL."';\"/>";
+		$str .= "	<input class=\"".$opts['CLASS']."\" type=\"button\" name=\"".$opts['NAME']."\" id=\"".$opts['NAME']."\" value=\"".$txt."\" onclick=\"javascript:window.location='".$URL."';\"/>";
 		$str .= "</div>";	
 		
 		return $str;
