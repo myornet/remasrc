@@ -54,7 +54,7 @@ if($user['Usuario']['perfil'] == 3 && $beneficiario['Beneficiario']['estado'] ==
 				<?php if($adicional['BeneficiarioAdicional']['nuevo_titular_beneficio_id'] == 0):?>
 					<td>
 						<?php if($user['Usuario']['perfil'] == 3 && $beneficiario['Beneficiario']['estado'] == 1) ?>
-						<a class="button is-white" href="/modificar_datos_adicional/<?php echo $adicional['BeneficiarioAdicional']['id'] ?>">
+						<a class="button is-white" href="/beneficiario_adicionales/modificar_datos_adicional/<?php echo $adicional['BeneficiarioAdicional']['id'] ?>">
 							<span class="icon is-small">
 								<i class="fas fa-user-edit"></i>
 							</span>
