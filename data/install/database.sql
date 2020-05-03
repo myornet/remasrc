@@ -1,8 +1,7 @@
 CREATE DATABASE  IF NOT EXISTS `ipnorte_remasrc` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `ipnorte_remasrc`;
 
-DROP USER 'remasrc'@'localhost';
-CREATE USER 'remasrc'@'localhost' IDENTIFIED BY 'twO^FBY-}4';
+CREATE USER IF NOT EXISTS 'remasrc'@'localhost' IDENTIFIED BY 'twO^FBY-}4';
 GRANT ALL PRIVILEGES ON ipnorte_remasrc.* TO 'remasrc'@'localhost';
 FLUSH PRIVILEGES;
 

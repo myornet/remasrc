@@ -81,7 +81,7 @@ class DATABASE_CONFIG {
 	var $default = array(
 		'driver' => 'mysql',
 		'persistent' => false,
-		'host' => 'localhost',
+		'host' => 'db',
 		'login' => 'remasrc',
 		'password' => 'twO^FBY-}4',
 		'database' => 'ipnorte_remasrc',

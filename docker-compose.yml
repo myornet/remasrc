@@ -1,0 +1,32 @@
+version: '3.3'
+
+services:
+  db:
+    image: mariadb:10.2.31
+    container_name: db
+    ports:
+      - "3308:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: ipnorte_remasrc
+      MYSQL_USER: remasrc
+      MYSQL_PASSWORD: twO^FBY-}4
+    volumes:
+      - ./data/install:/docker-entrypoint-initdb.d
+      - ./data/mysql:/var/lib/mysql
+  web:
+    depends_on:
+      - db
+    build: ./app
+    container_name: web
+    volumes:
+      - .:/var/www/html
+      - ./app/webroot/logs:/logs
+      - ./app/tmp:/tmp/remas
+      - ./etc/apache2/apache2.conf:/etc/apache2/apache2.conf:ro
+      - ./etc/apache2/php.ini:/etc/php5/apache2/php.ini:ro
+      - ./etc/apache2/000-default.conf:/etc/apache2/sites-enabled/000-default.conf:ro
+    ports:
+      - "80:80"
+    restart: always
+    
