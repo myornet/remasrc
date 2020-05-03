@@ -18,11 +18,20 @@
 
 *********************************************/
 
+/* Formularios */
 label {
 	display: none;
 }
 label.label {
 	display: block;
+}
+
+/* Paginador */
+.content ul.pagination-list {
+	list-style: none;
+}
+li.pagination-link.is-current {
+	margin: 0.25rem;
 }
 
 * {

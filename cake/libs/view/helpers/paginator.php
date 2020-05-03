@@ -501,13 +501,13 @@ class PaginatorHelper extends AppHelper {
 				'first' => 'first', 'last' => 'last',
 			);
 		}
-
+		
 		$options = array_merge(
 			array(
-				'tag' => 'span',
+				'tag' => 'li',
 				'before'=> null, 'after'=> null,
 				'model' => $this->defaultModel(),
-				'modulus' => '8', 'separator' => ' | ',
+				'modulus' => '8', 'class' => 'pagination-link',
 				'first' => null, 'last' => null,
 			),
 		(array)$options);
@@ -553,7 +553,7 @@ class PaginatorHelper extends AppHelper {
 				$out .= $this->Html->tag($tag, $this->link($i, array('page' => $i), $options)) . $separator;
 			}
 
-			$out .= $this->Html->tag($tag, $params['page'], array('class' => 'current'));
+			$out .= $this->Html->tag($tag, $params['page'], array('class' => 'pagination-link is-current'));
 			if ($i != $params['pageCount']) {
 				$out .= $separator;
 			}
@@ -583,7 +583,7 @@ class PaginatorHelper extends AppHelper {
 
 			for ($i = 1; $i <= $params['pageCount']; $i++) {
 				if ($i == $params['page']) {
-					$out .= $this->Html->tag($tag, $i, array('class' => 'current'));
+					$out .= $this->Html->tag($tag, $i, array('class' => 'pagination-link is-current'));
 				} else {
 					$out .= $this->Html->tag($tag, $this->link($i, array('page' => $i), $options));
 				}
