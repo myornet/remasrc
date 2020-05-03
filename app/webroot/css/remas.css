@@ -21,6 +21,9 @@
 label {
 	display: none;
 }
+label.label {
+	display: block;
+}
 
 * {
 	margin: 0;
