@@ -483,9 +483,6 @@ table tr.h3 td {
 }
 
 th {
-	/*font-family: monospace;*/
-	font-size: 10px;
-	background-color: #666666;
 	padding: 3px;
 	color: #ffffff;
 	text-align: center;
@@ -502,10 +499,8 @@ th a:hover {
 }
 
 td {
-	font-size: 11px;
 	background-color: #ffffff;
 	padding: 3px 3px 3px 3px;
-	empty-cells: show;
 	vertical-align: top;
 }
 
