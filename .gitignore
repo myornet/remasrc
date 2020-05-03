@@ -3,3 +3,4 @@ app/webroot/logs/auditoria/*.log
 app/webroot/logs/errores/*.log
 app/webroot/logs/auditoria/*.log
 data/mysql
+data/install/BACKUP*.sql
