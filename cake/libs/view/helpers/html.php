@@ -152,7 +152,8 @@ class HtmlHelper extends AppHelper {
 		'xhtml-strict' => '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">',
 		'xhtml-trans' => '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">',
 		'xhtml-frame' => '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">',
-		'xhtml11' => '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">'
+		'xhtml11' => '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">',
+		'html5' => '<!DOCTYPE html>'
 	);
 /**
  * Adds a link to the breadcrumbs array.
@@ -179,7 +180,7 @@ class HtmlHelper extends AppHelper {
  * @param  string $type Doctype to use.
  * @return string Doctype.
  */
-	function docType($type = 'xhtml-strict') {
+	function docType($type = 'html5') {
 		if (isset($this->__docTypes[$type])) {
 			return $this->output($this->__docTypes[$type]);
 		}
