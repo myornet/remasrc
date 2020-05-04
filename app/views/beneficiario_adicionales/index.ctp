@@ -5,7 +5,7 @@
 <div class="buttons">
 <?php 
 if($user['Usuario']['perfil'] == 3 && $beneficiario['Beneficiario']['estado'] == 1): ?>
-	<a href="alta_adicional/<?php echo $beneficiario_id ?>" class="button">
+	<a href="/beneficiario_adicionales/alta_adicional/<?php echo $beneficiario_id ?>" class="button">
 	<span class="icon is-small">
       <i class="fas fa-user-plus"></i>
     </span>
@@ -13,7 +13,7 @@ if($user['Usuario']['perfil'] == 3 && $beneficiario['Beneficiario']['estado'] ==
 	</a>
 
 	<?php if(!empty($adicionales)): ?>
-	<a href="administrar/<?php echo $beneficiario_id ?>" class="button">
+	<a href="/beneficiario_adicionales/administrar/<?php echo $beneficiario_id ?>" class="button">
 	<span class="icon is-small">
       <i class="fas fa-user-edit"></i>
     </span>
